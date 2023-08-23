@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+    <link rel="stylesheet" href="{% static 'assets/fileuploadsyle.css' %}">
+</head>
+<body>
+    <form id="uploadForm" action="{% url 'upload_file' %}" method="post" enctype="multipart/form-data" >
+        {% csrf_token %}
+        <div class="drag-area">
+            <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+            <header>Drag & Drop to Upload File</header>
+            <span>OR</span>
+            <button type="button" id="browseButton">Browse File</button>
+        </div>  
+        <input type="file" name="file" id="fileInput" hidden>
+        <button type="submit" id="submitButton" class="btn" disabled>Submit</button>
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{% static 'assets/js/fileuploadscript.js' %}"></script>
+    <!-- <form method="post" enctype="multipart/form-data" action="{% url 'upload_file' %}">
+        {% csrf_token %}
+        <input type="file" name="file">
+        <button type="submit">Upload</button>
+    </form> -->
+</body>
+</html>
